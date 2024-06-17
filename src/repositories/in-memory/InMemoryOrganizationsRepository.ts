@@ -24,6 +24,16 @@ export class InMemoryOrganizationsRepository
         return org;
     }
 
+    async findById(id: string) {
+        const org = this.items.find((org) => org.id === id);
+
+        if (!org) {
+            return null;
+        }
+
+        return org;
+    }
+
     async findByEmail(email: string) {
         const org = this.items.find((org) => org.email === email);
 
