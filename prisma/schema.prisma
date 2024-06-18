@@ -12,9 +12,10 @@ model Organization {
   ownerName     String
   email         String   @unique
   password_hash String
+  phone         String
+  city          String
   latitude      Decimal
   longitude     Decimal
-  phone         String
   created_at    DateTime @default(now())
   Pet           Pet[]
 
@@ -22,11 +23,14 @@ model Organization {
 }
 
 model Pet {
-  id         String   @id @default(uuid())
-  name       String
-  about      String?
-  species    Species
-  created_at DateTime @default(now())
+  id           String      @id @default(uuid())
+  name         String
+  about        String?
+  species      Species
+  age          Age
+  size         Size
+  energy_level EnergyLevel
+  created_at   DateTime    @default(now())
 
   organization    Organization @relation(fields: [organization_id], references: [id])
   organization_id String
@@ -41,4 +45,23 @@ enum Species {
   rabbit
   fish
   rodent
+}
+
+enum Age {
+  puppy
+  adult
+  senior
+}
+
+enum Size {
+  small
+  medium
+  large
+  giant
+}
+
+enum EnergyLevel {
+  low
+  medium
+  high
 }

@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { RegisterOrganizationUseCase } from './registerOrganization';
 import { compare } from 'bcryptjs';
 import { OrgAlreadyExistsError } from './errors/orgAlreadyExists';
-import { InMemoryOrganizationsRepository } from '@/repositories/in-memory/InMemoryOrganizationsRepository';
+import { InMemoryOrganizationsRepository } from '@/repositories/in-memory/inMemoryOrganizationsRepository';
 
 let organizationsRepository: InMemoryOrganizationsRepository;
 let sut: RegisterOrganizationUseCase;
@@ -19,6 +19,7 @@ describe('Register Organization Use Case', () => {
             email: 'jonhdoe@email.com',
             password: '123456',
             phone: '11999999999',
+            city: 'Belo Horizonte',
             latitude: -19.9353832,
             longitude: -44.0103913,
         });
@@ -32,6 +33,7 @@ describe('Register Organization Use Case', () => {
             email: 'jonhdoe@email.com',
             password: '123456',
             phone: '11999999999',
+            city: 'Belo Horizonte',
             latitude: -19.9353832,
             longitude: -44.0103913,
         });
@@ -52,6 +54,7 @@ describe('Register Organization Use Case', () => {
             email,
             password: '123456',
             phone: '11999999999',
+            city: 'Belo Horizonte',
             latitude: -19.9353832,
             longitude: -44.0103913,
         });
@@ -62,6 +65,7 @@ describe('Register Organization Use Case', () => {
                 email,
                 password: '123456',
                 phone: '11999999999',
+                city: 'Belo Horizonte',
                 latitude: -19.9353832,
                 longitude: -44.0103913,
             })
