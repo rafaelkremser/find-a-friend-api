@@ -1,13 +1,13 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { compare, hash } from 'bcryptjs';
-import { InMemoryOrganizationsRepository } from '@/repositories/in-memory/InMemoryOrganizationsRepository';
+import { hash } from 'bcryptjs';
+import { InMemoryOrganizationsRepository } from '@/repositories/in-memory/inMemoryOrganizationsRepository';
 import { AuthenticateUseCase } from './authenticate';
 import { InvalidCredentialsError } from './errors/invalidCredentialsError';
 
-let organizationsRepository: InMemoryOrganizationsRepository;
-let sut: AuthenticateUseCase;
-
 describe('Authenticate Use Case', () => {
+    let organizationsRepository: InMemoryOrganizationsRepository;
+    let sut: AuthenticateUseCase;
+
     beforeEach(() => {
         organizationsRepository = new InMemoryOrganizationsRepository();
         sut = new AuthenticateUseCase(organizationsRepository);
@@ -19,6 +19,7 @@ describe('Authenticate Use Case', () => {
             email: 'jonhdoe@email.com',
             password_hash: await hash('123456', 6),
             phone: '11999999999',
+            city: 'Belo Horizonte',
             latitude: -19.9353832,
             longitude: -44.0103913,
         });
@@ -46,6 +47,7 @@ describe('Authenticate Use Case', () => {
             email: 'jonhdoe@email.com',
             password_hash: await hash('123456', 6),
             phone: '11999999999',
+            city: 'Belo Horizonte',
             latitude: -19.9353832,
             longitude: -44.0103913,
         });
