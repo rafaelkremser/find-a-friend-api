@@ -20,8 +20,6 @@ describe('Search Pets Use Case', () => {
             password_hash: '123456',
             phone: '11999999999',
             city: 'Belo Horizonte',
-            latitude: -19.9353832,
-            longitude: -44.0103913,
         });
         await organizationsRepository.create({
             id: 'org-02',
@@ -30,8 +28,6 @@ describe('Search Pets Use Case', () => {
             password_hash: '123456',
             phone: '11999999999',
             city: 'Catas Altas',
-            latitude: -19.9353832,
-            longitude: -44.0103913,
         });
     });
 
