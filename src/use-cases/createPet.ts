@@ -11,7 +11,7 @@ interface CreatePetUseCaseRequest {
     age: Age;
     size: Size;
     energy_level: EnergyLevel;
-    organizationId: string;
+    organization_id: string;
 }
 
 interface CreatePetUseCaseResponse {
@@ -31,10 +31,10 @@ export class CreatePetUseCase {
         age,
         size,
         energy_level,
-        organizationId,
+        organization_id,
     }: CreatePetUseCaseRequest): Promise<CreatePetUseCaseResponse> {
         const organization = await this.organizationsRepository.findById(
-            organizationId
+            organization_id
         );
 
         if (!organization) {
@@ -48,7 +48,7 @@ export class CreatePetUseCase {
             age,
             size,
             energy_level,
-            organization_id: organizationId,
+            organization_id,
         });
 
         return { pet };

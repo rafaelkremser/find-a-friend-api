@@ -1,5 +1,5 @@
 import { OrgAlreadyExistsError } from '@/use-cases/errors/orgAlreadyExists';
-import { makeRegisterUseCase } from '@/use-cases/factories/makeRegisterUseCase';
+import { makeRegisterUseCase } from '@/use-cases/factories/makeRegister';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { z } from 'zod';
 
@@ -15,19 +15,12 @@ export async function registerOrganization(
         city: z.string(),
     });
 
-    const { ownerName, email, password, phone, city } =
-        requestBodyResponse.parse(request.body);
+    const body = requestBodyResponse.parse(request.body);
 
     try {
         const registerUseCase = makeRegisterUseCase();
 
-        await registerUseCase.handle({
-            ownerName,
-            email,
-            password,
-            phone,
-            city,
-        });
+        await registerUseCase.handle(body);
     } catch (err) {
         if (err instanceof OrgAlreadyExistsError) {
             return reply.status(409).send({ message: err.message });
