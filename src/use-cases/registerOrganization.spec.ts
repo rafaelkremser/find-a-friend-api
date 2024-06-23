@@ -20,8 +20,6 @@ describe('Register Organization Use Case', () => {
             password: '123456',
             phone: '11999999999',
             city: 'Belo Horizonte',
-            latitude: -19.9353832,
-            longitude: -44.0103913,
         });
 
         expect(organization.id).toEqual(expect.any(String));
@@ -34,8 +32,6 @@ describe('Register Organization Use Case', () => {
             password: '123456',
             phone: '11999999999',
             city: 'Belo Horizonte',
-            latitude: -19.9353832,
-            longitude: -44.0103913,
         });
 
         const isPasswordCorrectlyHashed = await compare(
@@ -55,8 +51,6 @@ describe('Register Organization Use Case', () => {
             password: '123456',
             phone: '11999999999',
             city: 'Belo Horizonte',
-            latitude: -19.9353832,
-            longitude: -44.0103913,
         });
 
         await expect(() =>
@@ -66,8 +60,6 @@ describe('Register Organization Use Case', () => {
                 password: '123456',
                 phone: '11999999999',
                 city: 'Belo Horizonte',
-                latitude: -19.9353832,
-                longitude: -44.0103913,
             })
         ).rejects.toBeInstanceOf(OrgAlreadyExistsError);
     });

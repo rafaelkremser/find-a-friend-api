@@ -15,8 +15,6 @@ export class InMemoryOrganizationsRepository
             password_hash: data.password_hash,
             phone: data.phone ?? null,
             city: data.city,
-            latitude: new Prisma.Decimal(data.latitude.toString()),
-            longitude: new Prisma.Decimal(data.longitude.toString()),
             created_at: new Date(),
         };
 

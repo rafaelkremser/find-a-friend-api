@@ -21,8 +21,6 @@ describe('Create Pet Use Case', () => {
             password_hash: '123456',
             phone: '11999999999',
             city: 'Belo Horizonte',
-            latitude: -19.9353832,
-            longitude: -44.0103913,
         });
     });
 

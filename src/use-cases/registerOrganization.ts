@@ -9,8 +9,6 @@ interface RegisterOrganizationUseCaseRequest {
     password: string;
     phone: string;
     city: string;
-    latitude: number;
-    longitude: number;
 }
 
 interface RegisterUseCaseResponse {
@@ -26,8 +24,6 @@ export class RegisterOrganizationUseCase {
         password,
         phone,
         city,
-        latitude,
-        longitude,
     }: RegisterOrganizationUseCaseRequest): Promise<RegisterUseCaseResponse> {
         const password_hash = await hash(password, 6);
 
@@ -45,8 +41,6 @@ export class RegisterOrganizationUseCase {
             password_hash,
             phone,
             city,
-            latitude,
-            longitude,
         });
 
         return { organization };

@@ -1,19 +1,35 @@
-import { FindManyParams, PetsRepository } from '@/repositories/petsRepository';
+import { PetsRepository } from '@/repositories/petsRepository';
 import { Pet } from '@prisma/client';
 
-interface SearchPetsRequest {
-    params: FindManyParams;
+interface SearchPetsUseCaseRequest {
+    city: string;
+    species?: string;
+    age?: string;
+    size?: string;
+    energy_level?: string;
 }
 
-interface SearchPetsResponse {
+interface SearchPetsUseCaseResponse {
     pets: Pet[];
 }
 
 export class SearchPetsUseCase {
     constructor(private petsRepository: PetsRepository) {}
 
-    async handle({ params }: SearchPetsRequest): Promise<SearchPetsResponse> {
-        const pets = await this.petsRepository.findMany(params);
+    async handle({
+        city,
+        species,
+        age,
+        size,
+        energy_level,
+    }: SearchPetsUseCaseRequest): Promise<SearchPetsUseCaseResponse> {
+        const pets = await this.petsRepository.findMany({
+            city,
+            species,
+            age,
+            size,
+            energy_level,
+        });
 
         return {
             pets,

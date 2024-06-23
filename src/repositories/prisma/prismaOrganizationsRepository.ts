@@ -11,17 +11,17 @@ export class PrismaOrganizationsRepository implements OrganizationsRepository {
         return org;
     }
 
-    async findByEmail(email: string) {
-        const org = await prisma.organization.findUnique({
-            where: { email },
+    async findById(id: string) {
+        const org = await prisma.organization.findFirst({
+            where: { id },
         });
 
         return org;
     }
 
-    async findById(id: string) {
-        const org = await prisma.organization.findFirst({
-            where: { id },
+    async findByEmail(email: string) {
+        const org = await prisma.organization.findUnique({
+            where: { email },
         });
 
         return org;

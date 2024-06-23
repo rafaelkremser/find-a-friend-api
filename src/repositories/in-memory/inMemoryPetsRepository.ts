@@ -28,24 +28,33 @@ export class InMemoryPetsRepository implements PetsRepository {
         return pet;
     }
 
+    async findById(id: string) {
+        const pet = this.items.find((pet) => pet.id === id);
+
+        if (!pet) {
+            return null;
+        }
+
+        return pet;
+    }
+
     async findMany(params: FindManyParams) {
         const orgsByCity = this.organizationsRepository.items.filter(
             (org) => org.city === params.city
         );
+
         const pets = this.items
             .filter((pet) =>
                 orgsByCity.some((org) => org.id === pet.organization_id)
             )
             .filter((pet) =>
-                params.species ? pet.species.includes(params.species) : true
+                params.species ? pet.species === params.species : true
             )
-            .filter((pet) => (params.age ? pet.age.includes(params.age) : true))
-            .filter((pet) =>
-                params.size ? pet.size.includes(params.size) : true
-            )
+            .filter((pet) => (params.age ? pet.age === params.age : true))
+            .filter((pet) => (params.size ? pet.size === params.size : true))
             .filter((pet) =>
                 params.energy_level
-                    ? pet.energy_level.includes(params.energy_level)
+                    ? pet.energy_level === params.energy_level
                     : true
             );
 

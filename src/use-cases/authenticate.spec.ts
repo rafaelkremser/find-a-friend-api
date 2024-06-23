@@ -20,8 +20,6 @@ describe('Authenticate Use Case', () => {
             password_hash: await hash('123456', 6),
             phone: '11999999999',
             city: 'Belo Horizonte',
-            latitude: -19.9353832,
-            longitude: -44.0103913,
         });
 
         const { organization } = await sut.handle({
@@ -48,8 +46,6 @@ describe('Authenticate Use Case', () => {
             password_hash: await hash('123456', 6),
             phone: '11999999999',
             city: 'Belo Horizonte',
-            latitude: -19.9353832,
-            longitude: -44.0103913,
         });
 
         await expect(() =>

@@ -12,15 +12,10 @@ export async function registerOrganization(
         email: z.string().email(),
         password: z.string().min(6),
         phone: z.string(),
-        latitude: z.number().refine((value) => {
-            return Math.abs(value) <= 90;
-        }),
-        longitude: z.number().refine((value) => {
-            return Math.abs(value) <= 180;
-        }),
+        city: z.string(),
     });
 
-    const { ownerName, email, password, phone, latitude, longitude } =
+    const { ownerName, email, password, phone, city } =
         requestBodyResponse.parse(request.body);
 
     try {
@@ -31,8 +26,7 @@ export async function registerOrganization(
             email,
             password,
             phone,
-            latitude,
-            longitude,
+            city,
         });
     } catch (err) {
         if (err instanceof OrgAlreadyExistsError) {
