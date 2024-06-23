@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify';
-import { create } from './create';
 import { verifyJWT } from '@/http/middlewares/verify-jwt';
+import { create } from './create';
 import { getPet } from './getPet';
 import { search } from './search';
 
