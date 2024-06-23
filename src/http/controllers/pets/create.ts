@@ -7,7 +7,7 @@ import { z } from 'zod';
 export async function create(request: FastifyRequest, reply: FastifyReply) {
     const requestBodyResponse = z.object({
         name: z.string(),
-        about: z.string(),
+        about: z.string().nullable(),
         species: z.enum([
             Species.Dog,
             Species.Cat,
