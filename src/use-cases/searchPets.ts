@@ -4,10 +4,10 @@ import { Pet } from '@prisma/client';
 
 interface SearchPetsUseCaseRequest {
     city: string;
-    species?: Species;
-    age?: Age;
-    size?: Size;
-    energy_level?: EnergyLevel;
+    species?: string;
+    age?: string;
+    size?: string;
+    energy_level?: string;
 }
 
 interface SearchPetsUseCaseResponse {

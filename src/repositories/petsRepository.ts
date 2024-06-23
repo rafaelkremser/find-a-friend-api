@@ -3,10 +3,10 @@ import * as enums from '@/enums/pets';
 
 export interface FindManyParams {
     city: string;
-    species?: enums.Species;
-    age?: enums.Age;
-    size?: enums.Size;
-    energy_level?: enums.EnergyLevel;
+    species?: string;
+    age?: string;
+    size?: string;
+    energy_level?: string;
 }
 
 export interface PetsRepository {

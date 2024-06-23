@@ -22,15 +22,16 @@ export class PrismaPetsRepository implements PetsRepository {
     async findMany(params: FindManyParams) {
         const pets = await prisma.pet.findMany({
             where: {
-                AND: {
-                    organization: { city: params.city },
-                    OR: [
-                        { species: params.species },
-                        { age: params.age },
-                        { size: params.size },
-                        { energy_level: params.energy_level },
-                    ],
+                organization: {
+                    city: {
+                        contains: params.city,
+                        mode: 'insensitive',
+                    },
                 },
+                species: params.species,
+                age: params.age,
+                size: params.size,
+                energy_level: params.energy_level,
             },
         });
 

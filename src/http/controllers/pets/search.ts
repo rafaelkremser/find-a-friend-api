@@ -4,30 +4,21 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 import { z } from 'zod';
 
 export async function search(request: FastifyRequest, reply: FastifyReply) {
-    const searchParamsSchema = z.object({
+    const searchQuerySchema = z.object({
         city: z.string(),
-        species: z.enum([
-            Species.Dog,
-            Species.Cat,
-            Species.Bird,
-            Species.Rabbit,
-            Species.Fish,
-            Species.Rodent,
-        ]),
-        age: z.enum([Age.Puppy, Age.Adult, Age.Senior]),
-        size: z.enum([Size.Small, Size.Medium, Size.Large, Size.Giant]),
-        energy_level: z.enum([
-            EnergyLevel.Low,
-            EnergyLevel.Medium,
-            EnergyLevel.High,
-        ]),
+        species: z
+            .enum(['dog', 'cat', 'bird', 'rabbit', 'fish', 'rodent'])
+            .optional(),
+        age: z.enum(['puppy', 'adult', 'senior']).optional(),
+        size: z.enum(['small', 'medium', 'large', 'giant']).optional(),
+        energy_level: z.enum(['low', 'medium', 'high']).optional(),
     });
 
-    const params = searchParamsSchema.parse(request.params);
+    const query = searchQuerySchema.parse(request.query);
 
     const searchUseCase = makeSearchPetsUseCase();
 
-    const { pets } = await searchUseCase.handle(params);
+    const { pets } = await searchUseCase.handle(query);
 
     return reply.status(200).send({ pets });
 }

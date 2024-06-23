@@ -21,45 +21,17 @@ model Organization {
 }
 
 model Pet {
-  id           String      @id @default(uuid())
+  id           String   @id @default(uuid())
   name         String
   about        String?
-  species      Species
-  age          Age
-  size         Size
-  energy_level EnergyLevel
-  created_at   DateTime    @default(now())
+  species      String
+  age          String
+  size         String
+  energy_level String
+  created_at   DateTime @default(now())
 
   organization    Organization @relation(fields: [organization_id], references: [id])
   organization_id String
 
   @@map("pets")
-}
-
-enum Species {
-  dog
-  cat
-  bird
-  rabbit
-  fish
-  rodent
-}
-
-enum Age {
-  puppy
-  adult
-  senior
-}
-
-enum Size {
-  small
-  medium
-  large
-  giant
-}
-
-enum EnergyLevel {
-  low
-  medium
-  high
 }
