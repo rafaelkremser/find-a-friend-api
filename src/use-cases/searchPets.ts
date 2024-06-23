@@ -1,12 +1,13 @@
+import { Age, EnergyLevel, Size, Species } from '@/enums/pets';
 import { PetsRepository } from '@/repositories/petsRepository';
 import { Pet } from '@prisma/client';
 
 interface SearchPetsUseCaseRequest {
     city: string;
-    species?: string;
-    age?: string;
-    size?: string;
-    energy_level?: string;
+    species?: Species;
+    age?: Age;
+    size?: Size;
+    energy_level?: EnergyLevel;
 }
 
 interface SearchPetsUseCaseResponse {
