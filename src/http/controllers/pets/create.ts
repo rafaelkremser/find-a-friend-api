@@ -7,22 +7,11 @@ import { z } from 'zod';
 export async function create(request: FastifyRequest, reply: FastifyReply) {
     const requestBodyResponse = z.object({
         name: z.string(),
-        about: z.string().nullable(),
-        species: z.enum([
-            Species.Dog,
-            Species.Cat,
-            Species.Bird,
-            Species.Rabbit,
-            Species.Fish,
-            Species.Rodent,
-        ]),
-        age: z.enum([Age.Puppy, Age.Adult, Age.Senior]),
-        size: z.enum([Size.Small, Size.Medium, Size.Large, Size.Giant]),
-        energy_level: z.enum([
-            EnergyLevel.Low,
-            EnergyLevel.Medium,
-            EnergyLevel.High,
-        ]),
+        about: z.string().optional(),
+        species: z.enum(['dog', 'cat', 'bird', 'rabbit', 'fish', 'rodent']),
+        age: z.enum(['puppy', 'adult', 'senior']),
+        size: z.enum(['small', 'medium', 'large', 'giant']),
+        energy_level: z.enum(['low', 'medium', 'high']),
         organization_id: z.string().uuid(),
     });
 

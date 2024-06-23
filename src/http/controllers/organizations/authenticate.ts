@@ -46,11 +46,11 @@ export async function authenticate(
                 httpOnly: true,
             })
             .send({ token });
-    } catch (error) {
-        if (error instanceof InvalidCredentialsError) {
-            return reply.status(400).send({ message: error.message });
+    } catch (err) {
+        if (err instanceof InvalidCredentialsError) {
+            return reply.status(400).send({ message: err.message });
         }
 
-        throw error;
+        throw err;
     }
 }

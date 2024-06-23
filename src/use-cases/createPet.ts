@@ -2,15 +2,14 @@ import { OrganizationsRepository } from '@/repositories/organizationsRepository'
 import { PetsRepository } from '@/repositories/petsRepository';
 import { Pet } from '@prisma/client';
 import { ResourceNotFoundError } from './errors/resourceNotFoundError';
-import { Age, EnergyLevel, Size, Species } from '../enums/pets';
 
 interface CreatePetUseCaseRequest {
     name: string;
-    about: string | null;
-    species: Species;
-    age: Age;
-    size: Size;
-    energy_level: EnergyLevel;
+    about?: string;
+    species: string;
+    age: string;
+    size: string;
+    energy_level: string;
     organization_id: string;
 }
 
