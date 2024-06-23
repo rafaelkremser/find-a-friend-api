@@ -1,4 +1,3 @@
-import { Age, EnergyLevel, Size, Species } from '@/enums/pets';
 import { PetsRepository } from '@/repositories/petsRepository';
 import { Pet } from '@prisma/client';
 

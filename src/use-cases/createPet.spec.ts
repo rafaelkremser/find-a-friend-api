@@ -2,7 +2,6 @@ import { InMemoryOrganizationsRepository } from '@/repositories/in-memory/inMemo
 import { InMemoryPetsRepository } from '@/repositories/in-memory/inMemoryPetsRepository';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { CreatePetUseCase } from './createPet';
-import { Age, EnergyLevel, Size, Species } from '@/enums/pets';
 import { ResourceNotFoundError } from './errors/resourceNotFoundError';
 
 describe('Create Pet Use Case', () => {
@@ -29,10 +28,10 @@ describe('Create Pet Use Case', () => {
         const { pet } = await sut.handle({
             name: 'Justin',
             about: 'A funny dog',
-            species: Species.Dog,
-            age: Age.Puppy,
-            size: Size.Medium,
-            energy_level: EnergyLevel.High,
+            species: 'dog',
+            age: 'puppy',
+            size: 'medium',
+            energy_level: 'high',
             organization_id: 'org-01',
         });
 
@@ -44,10 +43,10 @@ describe('Create Pet Use Case', () => {
             sut.handle({
                 name: 'Justin',
                 about: 'A funny dog',
-                species: Species.Dog,
-                age: Age.Puppy,
-                size: Size.Medium,
-                energy_level: EnergyLevel.High,
+                species: 'dog',
+                age: 'puppy',
+                size: 'medium',
+                energy_level: 'high',
                 organization_id: 'org-02',
             })
         ).rejects.toBeInstanceOf(ResourceNotFoundError);

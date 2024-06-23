@@ -16,3 +16,4 @@
 - [x] Todos os filtros, além da cidade, são opcionais
 - [ ] Para uma ORG acessar a aplicação como admin, ela precisa estar logada
 
+FAZER O RESTANTE DOS TESTES

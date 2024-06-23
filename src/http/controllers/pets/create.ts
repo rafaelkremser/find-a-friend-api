@@ -1,4 +1,3 @@
-import { Age, EnergyLevel, Size, Species } from '@/enums/pets';
 import { ResourceNotFoundError } from '@/use-cases/errors/resourceNotFoundError';
 import { makeCreatePetUseCase } from '@/use-cases/factories/makeCreatePet';
 import { FastifyReply, FastifyRequest } from 'fastify';

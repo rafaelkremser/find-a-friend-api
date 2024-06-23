@@ -1,5 +1,4 @@
 import { Prisma, Pet } from '@prisma/client';
-import * as enums from '@/enums/pets';
 
 export interface FindManyParams {
     city: string;

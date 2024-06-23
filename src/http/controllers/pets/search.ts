@@ -1,4 +1,3 @@
-import { Age, EnergyLevel, Size, Species } from '@/enums/pets';
 import { makeSearchPetsUseCase } from '@/use-cases/factories/makeSearchPets';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { z } from 'zod';
