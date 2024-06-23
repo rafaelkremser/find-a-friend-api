@@ -2,8 +2,9 @@ import request from 'supertest';
 import { app } from '@/app';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { createAndAuthenticateOrg } from '@/utils/test/createAndAuthenticateOrg';
+import { prisma } from '@/lib/prisma';
 
-describe('Search Gym (e2e)', () => {
+describe('Search Pet (e2e)', () => {
     beforeAll(async () => {
         await app.ready();
     });
@@ -12,32 +13,29 @@ describe('Search Gym (e2e)', () => {
         await app.close();
     });
 
-    it('should be able to search gyms by title', async () => {
+    it('should be able to search pets by city and species', async () => {
         const { org, token } = await createAndAuthenticateOrg(app);
 
-        await request(app.server)
-            .post('/pets')
-            .set('Authorization', `Bearer ${token}`)
-            .send({
-                name: 'Leon',
-                species: 'dog',
-                age: 'puppy',
-                size: 'giant',
-                energy_level: 'high',
-                organization_id: org.id,
-            });
-
-        await request(app.server)
-            .post('/pets')
-            .set('Authorization', `Bearer ${token}`)
-            .send({
-                name: 'Ada',
-                species: 'cat',
-                age: 'adult',
-                size: 'medium',
-                energy_level: 'low',
-                organization_id: org.id,
-            });
+        await prisma.pet.createMany({
+            data: [
+                {
+                    name: 'Leon',
+                    species: 'dog',
+                    age: 'puppy',
+                    size: 'giant',
+                    energy_level: 'high',
+                    organization_id: org.id,
+                },
+                {
+                    name: 'Ada',
+                    species: 'cat',
+                    age: 'adult',
+                    size: 'medium',
+                    energy_level: 'low',
+                    organization_id: org.id,
+                },
+            ],
+        });
 
         const searchPetsResponse = await request(app.server)
             .get('/pets/search')
