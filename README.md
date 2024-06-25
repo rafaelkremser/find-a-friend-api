@@ -1,18 +1,28 @@
-### Regras da aplicação
+# Find-A-Friend API
 
-- [x] Deve ser possível cadastrar um pet
-- [x] Deve ser possível listar todos os pets disponíveis para adoção em uma cidade
-- [x] Deve ser possível filtrar pets por suas características
-- [x] Deve ser possível visualizar detalhes de um pet para adoção
-- [x] Deve ser possível se cadastrar como uma ORG
-- [x] Deve ser possível realizar login como uma ORG
+This project is the solution to a challenge made by Rocketseat. Find-A-Friend is an application developed using the latest Node.js backend technologies.
 
-### Regras de negócio
+## Tech Stack
 
-- [x] Para listar os pets, obrigatoriamente precisamos informar a cidade
-- [x] Uma ORG precisa ter um endereço e um número de WhatsApp
-- [x] Um pet deve estar ligado a uma ORG
-- [ ] O usuário que quer adotar, entrará em contato com a ORG via WhatsApp-
-- [x] Todos os filtros, além da cidade, são opcionais
-- [ ] Para uma ORG acessar a aplicação como admin, ela precisa estar logada-
+<!--- # "Verify icons availability here https://github.com/tandpfun/skill-icons" -->
 
+[![My Skills](https://skillicons.dev/icons?i=ts,prisma,docker,postgres,vite)](https://skillicons.dev)
+
+## Getting Started
+
+1. **Install Dependencies**: `npm install`
+2. **Create containers**: `docker-compose up -d`
+3. **Environment variables**: Copy `.env.example` to a new `.env`
+4. **Database Setup**: `npx prisma migrate dev --name init`
+5. **Start Developing**: `npm run dev`
+
+## Contribute
+
+1. **Clone project**: `git clone https://github.com/rafaelkremser/find-a-friend-api.git`
+2. **Create feat/branch**: `git checkout -b feat/NAME`
+
+## License
+
+This software is available under the following licenses:
+
+- [MIT](https://rem.mit-license.org)
