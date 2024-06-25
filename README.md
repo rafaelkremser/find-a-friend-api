@@ -1,10 +1,8 @@
 # Find-A-Friend API
 
-This project is the solution to a challenge made by Rocketseat. Find-A-Friend is an application developed using the latest Node.js backend technologies.
+This project is the solution to a challenge made by <a href="https://app.rocketseat.com.br/rocketid/kremser" style="color:#996dff;text-decoration: underline">Rocketseat</a>. Find-A-Friend is an application developed using the latest Node.js backend technologies.
 
 ## Tech Stack
-
-<!--- # "Verify icons availability here https://github.com/tandpfun/skill-icons" -->
 
 [![My Skills](https://skillicons.dev/icons?i=ts,prisma,docker,postgres,vite)](https://skillicons.dev)
 
